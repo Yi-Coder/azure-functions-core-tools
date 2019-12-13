@@ -658,7 +658,7 @@ namespace Azure.Functions.Cli.Kubernetes
                     new RuleV1
                     {
                         ApiGroups = new string[]{""},
-                        Resources = new string[]{"secrets"},
+                        Resources = new string[]{"secrets", "configMaps"},
                         Verbs = new string[]{ "get", "list", "watch", "create", "update", "patch", "delete" }
                     }
                 }

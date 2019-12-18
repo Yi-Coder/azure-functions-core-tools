@@ -197,9 +197,16 @@ Target "GenerateZipToSign" (fun _ ->
         "node_x86.dll"
         "edge_nativeclr_x64.dll"
         "edge_nativeclr_x86.dll"
+        "protobuf-net.dll"
+        "functions.js"
+        "double_edge.js"
+        "edge.js"
     |]
 
     !! (buildDir @@ "/**/*.dll")
+        ++ (buildDir @@ "/**/azurefunctions/functions.js")
+        ++ (buildDir @@ "/**/double_edge.js")
+        ++ (buildDir @@ "/**/edge.js")
         |> Seq.filter (fun f -> thirdParty |> Array.contains (f |> Path.GetFileName))
         |> CreateZip buildDir toSignThridPartyPath String.Empty 7 true
 )
